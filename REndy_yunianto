@@ -1,0 +1,32 @@
+input(‘CYCLIC REDUNDANCY CHECK’);
+input(‘MODULO 2′);
+input(‘M = Pesan’);
+input(‘P = Pola’);
+input(‘n = Banyak bit pada FCS’);
+M = input(‘masukan nilai M :’, ‘s’);
+M = bin2dec(M);
+P = input(‘masukan nilai P :’, ‘s’);
+P = bin2dec(P);
+n = input(‘masukan nilai n (dalam biner) :’, ‘s’);
+n = bin2dec(n);
+disp (‘M =’); disp (M);
+disp (‘P =’); disp (P);
+disp (‘n =’); disp (n);
+R = mod ((n*M),P);
+T = (n*M) + R ;
+T1 = input (‘masukan nilai yang akan di terima Receiver :’, ‘s’);
+Rx = str2num ([T1]);
+disp (‘T =’); disp (dec2bin (T));
+disp (‘T1 = ‘); disp (T1);
+T1 = bin2dec (T1);
+if ((mod (T1,P))-(mod (T,P)) == 0);
+disp (‘tidak ada error’);
+else
+disp (‘terjadi error’);
+end;
+Tx = input (‘untuk membuat plot silahkan masukan nilai T:’, ‘s’);
+Tx = str2num ([Tx]);
+subplot(2,1,1); stairs(Tx,’–rs’,'LineWidth’,5,’MarkerEdgeColor’,'k’,'MarkerFaceColor’,'g’,'MarkerSize’,1)
+title(‘sinyal yang ditransmisikan’);
+subplot(2,1,2); stairs(Rx,’–rs’,'LineWidth’,5,’MarkerEdgeColor’,'k’,'MarkerFaceColor’,'g’,'MarkerSize’,1)
+title(‘sinyal yang diterima’);
